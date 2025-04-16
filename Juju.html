@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Juju</title>
+        <style>
+            .box1{
+                /* margin : auto; */
+                background-color : rgb(249, 246, 246);
+                /* border : solid gray; */
+                width : 500px;
+                height : 300px;
+                position : relative;
+            }
+            .box2{
+                position : absolute;
+                top: 50%;
+                /* left: 50%; */
+                transform:translate(0,-50%);
+            }
+            .content1{
+                width:400px;
+            }
+            .box1{
+                position:fixed;
+                top: 400px;
+            }
+            table{
+                position:fixed;
+                top: 200px;
+                left: 50px;
+            }
+            #a1{
+                position : fixed;
+                top:150px;
+                left:750px;
+            }
+            
+        </style>
+    </head>
+        
+    <body>
+        <header><h1>Juju</h1></header>
+        <hr/>
+        <p><strong>주</strong>계획이 <em>주</em>가 되다.</p>
+        <article>
+            <div class= "box1"><h4 >must-do thing</h4>
+                <div class="box2">
+                    <ol>
+                    <li><input type="text" class = "content content1" placeholder = "you can write a thing to have to do" /></li>
+                    <li><input type="text" class = "content content1"/></li>
+                    <li><input type="text" class = "content content1"/></li>
+                    <li><input type="text" class = "content content1"/></li>
+                    <li><input type="text" class = "content content1"/></li>
+                    <li><input type="text" class = "content content1"/></li>
+                    <li><input type="text" class = "content content1"/></li>
+                    </ol>
+                </div>
+            </div>
+            <!--한 주의 계획-->
+            <table style ="margin :auto ;">
+                <h4 style = "text-align : center" id ="a1">only one week plan</h4>
+                <tr>
+                    <th>월</th>
+                    <th>화</th>
+                    <th>수</th>
+                    <th>목</th>
+                    <th>금</th>
+                    <th>토</th>
+                    <th>일</th>
+                </tr>
+                <tr>
+                    <td>
+                        <ul>
+                            <li><input type= "text" class = "content" placeholder="write your plan"/></li>
+                            <li><input type= "text" class = "content" /></li>
+                            <li><input type= "text" class = "content" /></li>
+                            <li><input type= "text" class = "content" /></li>
+                            <li><input type= "text" class = "content" /></li>
+                            
+                        </ul>
+                    </td> 
+                    <td>
+                        <ul>
+                            <li><input type= "text" class = "content" /></li>
+                            <li><input type= "text" class = "content" /></li>
+                            <li><input type= "text" class = "content" /></li>
+                            <li><input type= "text" class = "content" /></li>
+                            <li><input type= "text" class = "content" /></li>
+                            
+                        </ul>
+                    </td> <td>
+                        <ul>
+                            <li><input type= "text" class = "content" /></li>
+                            <li><input type= "text" class = "content" /></li>
+                            <li><input type= "text" class = "content" /></li>
+                            <li><input type= "text" class = "content" /></li>
+                            <li><input type= "text" class = "content" /></li>
+                            
+                        </ul>
+                    </td> <td>
+                        <ul>
+                            <li><input type= "text" class = "content"/></li>
+                            <li><input type= "text" class = "content" /></li>
+                            <li><input type= "text" class = "content" /></li>
+                            <li><input type= "text" class = "content" /></li>
+                            <li><input type= "text" class = "content" /></li>
+                            
+                        </ul>
+                    </td> <td>
+                        <ul>
+                            <li><input type= "text" class = "content" /></li>
+                            <li><input type= "text" class = "content" /></li>
+                            <li><input type= "text" class = "content" /></li>
+                            <li><input type= "text" class = "content" /></li>
+                            <li><input type= "text" class = "content" /></li>
+                            
+                        </ul>
+                    </td> <td>
+                        <ul>
+                            <li><input type= "text" class = "content"/></li>
+                            <li><input type= "text" class = "content" /></li>
+                            <li><input type= "text" class = "content" /></li>
+                            <li><input type= "text" class = "content" /></li>
+                            <li><input type= "text" class = "content" /></li>
+                            
+                        </ul>
+                    </td> <td>
+                        <ul>
+                            <li><input type= "text" class = "content"/></li>
+                            <li><input type= "text" class = "content" /></li>
+                            <li><input type= "text" class = "content" /></li>
+                            <li><input type= "text" class = "content" /></li>
+                            <li><input type= "text" class = "content" /></li>
+                            
+                        </ul>
+                    </td> 
+                </tr>
+            </table>
+            <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <h4 style= "text-align:center">Today-To-Do List</h4>
+            <div>
+                <textarea style= "width :100%; height:200px" placeholder="위의 것을 참조해서 작성해보세요."></textarea>
+            </div>
+            <button onclick="save()">저장</button>
+            <button onclick="clearSaved()">저장취소</button>
+        </article>
+        <script>
+            const inputs = document.querySelectorAll(".content");
+
+            function save() {
+            inputs.forEach((input, i) => {
+            localStorage.setItem(`input${i}`, input.value);
+            });
+            alert("저장 완료!");
+        }
+        function clearSaved() {
+        inputs.forEach((input, i) => {
+            localStorage.removeItem(`input${i}`);
+            input.value = ""; // 화면에 입력된 값도 삭제
+        });
+        alert("저장 취소됨!");
+        }
+
+        window.onload = function() {
+        inputs.forEach((input, i) => {
+        const saved = localStorage.getItem(`input${i}`);
+        if (saved) input.value = saved;
+        });
+    };
+        </script>
+    </body>
+</html>
+
